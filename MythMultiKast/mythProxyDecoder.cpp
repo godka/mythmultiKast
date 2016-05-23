@@ -24,10 +24,10 @@ int mythProxyDecoder::MainLoop()
 		SDL_Delay(1);
 		SDL_PollEvent(NULL);
 	}
+	delete [] buf;
 	/*
 	if (msocket){
 		//msocket->socket_CloseSocket();
-		delete [] buf;
 		//delete msocket;
 		msocket = NULL;
 	}
