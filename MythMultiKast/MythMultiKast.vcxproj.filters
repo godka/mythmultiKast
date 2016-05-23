@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\kernel">
+      <UniqueIdentifier>{995419e5-55df-4815-a6d0-42556b6cf0a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\server">
+      <UniqueIdentifier>{0e4b6c88-cccc-4cdb-a9f0-bb0180e2c498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\decoder">
+      <UniqueIdentifier>{7e858d2e-114f-41f1-a746-4268094ce88c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\decoder\stream">
+      <UniqueIdentifier>{c343a895-7716-4252-b3db-da056478ab6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client">
+      <UniqueIdentifier>{5e963fbe-bdc6-47af-b9e6-826f633471df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\decoder\proxy">
+      <UniqueIdentifier>{1815b751-c014-4d10-afb1-323d24037f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\kernel\ini">
+      <UniqueIdentifier>{820ba1b3-197b-4716-b7d7-546f6c7a9e2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\kernel\list">
+      <UniqueIdentifier>{18e4aa57-2a0a-4ab9-b7d6-eac7e75f68a5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IniFile.c">
+      <Filter>Source Files\kernel\ini</Filter>
+    </ClCompile>
+    <ClCompile Include="mythStreamMapServer.cpp">
+      <Filter>Source Files\server</Filter>
+    </ClCompile>
+    <ClCompile Include="mythStreamServer.cpp">
+      <Filter>Source Files\server</Filter>
+    </ClCompile>
+    <ClCompile Include="mythVirtualServer.cpp">
+      <Filter>Source Files\server</Filter>
+    </ClCompile>
+    <ClCompile Include="mythBaseClient.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="mythVirtualDecoder.cpp">
+      <Filter>Source Files\decoder</Filter>
+    </ClCompile>
+    <ClCompile Include="mythProxyDecoder.cpp">
+      <Filter>Source Files\decoder\proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="mythStreamDecoder.cpp">
+      <Filter>Source Files\decoder\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="mythAvlist.cpp">
+      <Filter>Source Files\kernel\list</Filter>
+    </ClCompile>
+    <ClCompile Include="MythSocket.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mythAvlist.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MythConfig.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mythStreamServer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mythStreamMapServer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mythBaseClient.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mythVirtualDecoder.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mythVirtualServer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IniFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mythProxyDecoder.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mythStreamDecoder.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MythSocket.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
