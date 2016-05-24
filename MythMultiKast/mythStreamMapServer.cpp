@@ -106,7 +106,7 @@ void mythStreamMapServer::ServerDecodeCallBack(MythSocket* people, char* data, i
 				SDL_LockMutex(mapmutex);
 				server = Iter->second;									//find an existing server from map list,then add client into server list
 				if (server){
-					((mythProxyDecoder*) server->GetDecoder())->refreshSocket(people);	//probiem
+					((mythProxyDecoder*) server->GetDecoder())->refreshSocket(people);	//problem
 				}
 				SDL_UnlockMutex(mapmutex);
 			}
@@ -133,18 +133,21 @@ void mythStreamMapServer::ServerDecodeCallBack(MythSocket* people, char* data, i
 	return;
 }
 
-void mythStreamMapServer::showAllClients(){
+string mythStreamMapServer::showAllClients(){
 	int sum = 0;
 	int clientnum = 0;
+	string str;
 	for (map<int, mythStreamServer*>::iterator Iter = servermap.begin(); Iter != servermap.end(); Iter++){
 		if (Iter->second){
 			int tmpnum = Iter->second->getClientNumber();
+			//str += "{"
 			cout << "server cameraid :" << Iter->second->m_cameraid << ";client num :" << tmpnum << endl;
 			sum++;
 			clientnum += tmpnum;
 		}
 	}
 	cout << "server num :" << sum << ";client sum :" << clientnum << endl;
+	return str;
 }
 
 void mythStreamMapServer::ServerCloseCallBack(MythSocket* people)
@@ -161,7 +164,7 @@ void mythStreamMapServer::ServerCloseCallBack(MythSocket* people)
 	}
 	return;
 }
-//this will make a fatal error if using stream close,unknow bug
+//this will make a fatal error if using stream close,unknown bug
 #ifdef MYTH_STREAM_CLOSE
 Uint32 mythStreamMapServer::TimerCallbackStatic(Uint32 interval, void *param)
 {

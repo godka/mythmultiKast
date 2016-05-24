@@ -14,7 +14,7 @@ public:
 	static mythStreamMapServer* CreateNew(int port);
 	void ServerDecodeCallBack(MythSocket* people, char* data, int datalength);
 	void ServerCloseCallBack(MythSocket* people);
-	void showAllClients();
+	string showAllClients();
 	int startAll(void);
 
 #ifdef MYTH_STREAM_CLOSE
