@@ -14,7 +14,8 @@ int mythProxyDecoder::MainLoop()
 				put((unsigned char*) buf, rc);
 			}
 			else if (rc < 0){
-				msocket = NULL;
+				//msocket = NULL;
+				printf("%d,Recv Buffer < 0", msocket);
 			}
 		}
 		else{
@@ -52,8 +53,8 @@ mythProxyDecoder::~mythProxyDecoder()
 int mythProxyDecoder::refreshSocket(MythSocket* people)
 {
 	SDL_LockMutex(mmutex);
-	if (!msocket)
-		msocket = people;
+	//if (!msocket)
+	msocket = people;
 	SDL_UnlockMutex(mmutex);
 	return 0;
 }
