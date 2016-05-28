@@ -83,6 +83,7 @@ void mythStreamMapServer::ServerDecodeCallBack(MythSocket* people, char* data, i
 			client = mythBaseClient::CreateNew(people, usingthread,cameratype);
 			people->data = server;
 			people->addtionaldata = client;
+			people->server = this;
 			server->AppendClient(client);
 			SDL_UnlockMutex(mapmutex);
 		}

@@ -1,4 +1,6 @@
 #include "mythProxyDecoder.hh"
+#include "mythBaseClient.hh"
+#include "mythStreamServer.hh"
 
 
 int mythProxyDecoder::MainLoop()
@@ -12,10 +14,6 @@ int mythProxyDecoder::MainLoop()
 			if (rc > 0) {
 				m_count += rc;
 				put((unsigned char*) buf, rc);
-			}
-			else if (rc < 0){
-				//msocket = NULL;
-				printf("%d,Recv Buffer < 0", msocket);
 			}
 		}
 		else{
@@ -53,7 +51,13 @@ mythProxyDecoder::~mythProxyDecoder()
 int mythProxyDecoder::refreshSocket(MythSocket* people)
 {
 	SDL_LockMutex(mmutex);
-	//if (!msocket)
+	if (msocket){
+		if (msocket->server){
+			mythVirtualServer* server = (mythVirtualServer*) msocket->server;
+			server->closePeople(msocket);
+			msocket = NULL;
+		}
+	}
 	msocket = people;
 	SDL_UnlockMutex(mmutex);
 	return 0;

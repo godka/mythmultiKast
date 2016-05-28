@@ -164,6 +164,7 @@ int mythVirtualServer::closePeople(MythSocket* people){
 	people->sock = NULL;
 	people->isPush = NULL;
 	people->addtionaldata = NULL;
+	people->server = NULL;
 	return 0;
 }
 string mythVirtualServer::GetLocalAddress(){
@@ -200,6 +201,7 @@ int mythVirtualServer::initalsocket(int port){
     for ( i=0; i<CHAT_MAXPEOPLE; ++i ) {
 		people[i] = MythSocket::CreateNew();
 		people[i]->addtionaldata = NULL;
+		people[i]->server = NULL;
 		people[i]->active = 0;
 		people[i]->sock = NULL;
 		people[i]->isPush = 0;

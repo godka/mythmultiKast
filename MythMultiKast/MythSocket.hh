@@ -22,6 +22,7 @@ public:
 	IPaddress peer;
 	void* addtionaldata;
 	void* data;
+	void* server;
 private:
 	bool isrunning;
 	//char* downbuffer;
