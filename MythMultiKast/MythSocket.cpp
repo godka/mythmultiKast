@@ -41,6 +41,7 @@ MythSocket::MythSocket()
 	isPush = 0;
 	//downbuffer = new char[4097];
 	downlength = 0;
+	hasclosed = 0;
 }
 
 MythSocket::MythSocket(const char* ip, int port)
@@ -170,6 +171,7 @@ int MythSocket::socket_CloseSocket(int handle)
 	this->isPush = 0;
 	SDLNet_TCP_DelSocket(socketset, sock);
 	SDLNet_TCP_Close(sock);
+	hasclosed = 1;
 	//sock = NULL;
 	//if (handle == 0){
 	//}

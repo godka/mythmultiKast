@@ -17,6 +17,7 @@ public:
 	void generateSock(TCPsocket msock);
 	~MythSocket();
 	int active;
+	int hasclosed;
 	int isPush;
 	TCPsocket sock;
 	IPaddress peer;

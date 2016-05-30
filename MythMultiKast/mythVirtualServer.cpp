@@ -159,7 +159,7 @@ int mythVirtualServer::closePeople(MythSocket* people){
 	ServerCloseCallBack(people);
 	if (people->sock)
 		SDLNet_TCP_DelSocket(socketset, people->sock);
-	if (people->sock)
+	if (!people->hasclosed)
 		SDLNet_TCP_Close(people->sock);
 	people->sock = NULL;
 	people->isPush = NULL;
