@@ -168,8 +168,10 @@ int MythSocket::socket_CloseSocket(int handle)
 	//	downbuffer = NULL;
 	//}
 	this->isPush = 0;
+	SDLNet_TCP_DelSocket(socketset, sock);
 	SDLNet_TCP_Close(sock);
-	if (handle == 0)
-		SDLNet_TCP_DelSocket(socketset, sock);
+	//sock = NULL;
+	//if (handle == 0){
+	//}
 	return 0;
 }
