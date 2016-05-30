@@ -161,7 +161,7 @@ int MythSocket::socket_strcmp(char* buff, char*str, int length)
 #endif
 }
 
-int MythSocket::socket_CloseSocket()
+int MythSocket::socket_CloseSocket(int handle)
 {
 	//if (downbuffer){
 	//	delete [] downbuffer;
@@ -169,6 +169,7 @@ int MythSocket::socket_CloseSocket()
 	//}
 	this->isPush = 0;
 	SDLNet_TCP_Close(sock);
-	SDLNet_TCP_DelSocket(socketset, sock);
+	if (handle == 0)
+		SDLNet_TCP_DelSocket(socketset, sock);
 	return 0;
 }

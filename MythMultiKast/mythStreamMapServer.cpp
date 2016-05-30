@@ -56,8 +56,9 @@ mythStreamMapServer* mythStreamMapServer::CreateNew(int port)
 void mythStreamMapServer::ServerDecodeCallBack(MythSocket* people, char* data, int datalength)
 {
 	if (strstr(data, "GET /list")){
-		people->socket_SendStr(showAllClients().c_str());
-		people->socket_CloseSocket();
+		string tmp = showAllClients();
+		people->socket_SendStr(tmp.c_str(),tmp.length());
+		people->socket_CloseSocket(1);
 		return;
 	}
 	map<int,mythStreamServer*>::iterator Iter;
@@ -132,7 +133,7 @@ void mythStreamMapServer::ServerDecodeCallBack(MythSocket* people, char* data, i
 		}
 		else{
 			people->socket_SendStr("404");
-			people->socket_CloseSocket();
+			people->socket_CloseSocket(1);
 			//ServerCloseCallBack(people);
 		}
 	}
@@ -146,18 +147,12 @@ string mythStreamMapServer::showAllClients(){
 	string str = "alive:";
 	for (map<int, mythStreamServer*>::iterator Iter = servermap.begin(); Iter != servermap.end(); Iter++){
 		if (Iter->second){
-			//int tmpnum = Iter->second->getClientNumber();
-			//str += "{"
 			int t = Iter->second->m_cameraid;
 			SDL_snprintf(tmp, 20, "%d", t);
 			str += tmp;
 			str += ";";
-			//cout << "server cameraid :" << Iter->second->m_cameraid << ";client num :" << tmpnum << endl;
-			//sum++;
-			//clientnum += tmpnum;
 		}
 	}
-	//cout << "server num :" << sum << ";client sum :" << clientnum << endl;
 	return str;
 }
 
