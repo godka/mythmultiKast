@@ -129,7 +129,6 @@ void mythVirtualServer::HandleClient(int which){
 
 	if (which > CHAT_MAXPEOPLE || which < 0)
 		return;
-	char data[4096] = {0};
 	//char tmpdata[512] = {0};
 	int datalength;
 	int length;

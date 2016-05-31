@@ -40,6 +40,7 @@ private:
 	int initalsocket(int port);
 	int m_port;
 	bool m_stop;
+	char data[4096];
 	void HandleServer(void);
 	void HandleClient(int which);
 	MythSocket *people[CHAT_MAXPEOPLE];
