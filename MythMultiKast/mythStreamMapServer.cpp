@@ -58,7 +58,8 @@ void mythStreamMapServer::ServerDecodeCallBack(MythSocket* people, char* data, i
 	if (strstr(data, "GET /list")){
 		string tmp = showAllClients();
 		people->socket_SendStr(tmp.c_str(),tmp.length());
-		people->socket_CloseSocket(1);
+		closePeople(people);
+		//people->socket_CloseSocket(1);
 		return;
 	}
 	map<int,mythStreamServer*>::iterator Iter;
@@ -133,7 +134,7 @@ void mythStreamMapServer::ServerDecodeCallBack(MythSocket* people, char* data, i
 		}
 		else{
 			people->socket_SendStr("404");
-			people->socket_CloseSocket(1);
+			closePeople(people);
 			//ServerCloseCallBack(people);
 		}
 	}

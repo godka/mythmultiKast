@@ -26,7 +26,7 @@ void MythSocket::generateSock(TCPsocket msock)
 {
 	if (msock){
 		sock = msock;
-		SDLNet_TCP_AddSocket(socketset, sock);
+		SDLNet_TCP_AddSocket(socketset, msock);
 	}
 }
 
@@ -172,6 +172,7 @@ int MythSocket::socket_CloseSocket(int handle)
 	SDLNet_TCP_DelSocket(socketset, sock);
 	SDLNet_TCP_Close(sock);
 	hasclosed = 1;
+	active = 0;
 	//sock = NULL;
 	//if (handle == 0){
 	//}
