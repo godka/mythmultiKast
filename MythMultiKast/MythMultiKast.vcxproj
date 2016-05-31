@@ -55,11 +55,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./live555</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./SDL2</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./live555</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./SDL2</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,6 +121,7 @@
     <ClInclude Include="mythVirtualServer.hh" />
     <ClInclude Include="mythStreamDecoder.hh" />
     <ClInclude Include="MythSocket.hh" />
+    <ClInclude Include="SDLnetsys.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

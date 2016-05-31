@@ -107,5 +107,8 @@
     <ClInclude Include="MythSocket.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SDLnetsys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

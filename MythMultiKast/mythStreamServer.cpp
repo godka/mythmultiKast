@@ -37,7 +37,7 @@ mythStreamServer::mythStreamServer(int cameraid, void* args)
 	numbermutex = SDL_CreateMutex();
 	streamservermutex = SDL_CreateMutex();
 	decodemutex = SDL_CreateMutex();
-	//baselist.reserve(100);
+	baselist.reserve(100);
 	additionalargs = args;
 	//open("myth.db");
 }
