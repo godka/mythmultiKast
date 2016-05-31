@@ -134,12 +134,35 @@ void mythVirtualServer::HandleClient(int which){
 	int length;
 	int maxlen = 512;
 	datalength = 0;
+	/*
 	//may have some bugs
 	for(;;){
 		length = SDLNet_TCP_Recv(people[which]->sock, data + datalength, maxlen);
 		datalength += length;
 		if (length < maxlen)
 			break;
+	}
+	*/
+	char tmpdata[512] = { 0 };
+	for (;;){
+		length = SDLNet_TCP_Recv(people[which]->sock, tmpdata, maxlen);
+		if (length > 0){
+			int reallen = datalength + length;
+			if (reallen < 4096){
+				SDL_memcpy(data + datalength, tmpdata, length);
+				datalength += length;
+			}
+			else{
+				printf("Client Message Too Long!\n");
+				datalength = 0;
+				break;
+			}
+			if (length < maxlen)
+				break;
+		}
+		else{
+			break;
+		}
 	}
     /* Has the connection been closed? */
     if ( datalength <= 0 ) {
