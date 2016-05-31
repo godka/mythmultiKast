@@ -121,7 +121,6 @@
     <ClInclude Include="mythVirtualServer.hh" />
     <ClInclude Include="mythStreamDecoder.hh" />
     <ClInclude Include="MythSocket.hh" />
-    <ClInclude Include="SDLnetsys.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
