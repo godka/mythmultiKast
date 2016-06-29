@@ -57,6 +57,16 @@ void mythStreamMapServer::ServerDecodeCallBack(MythSocket* people, char* data, i
 {
 	if (strstr(data, "GET /list")){
 		string tmp = showAllClients();
+		/*
+		HTTP/1.1 200 OK
+		Date: Sat, 31 Dec 2005 23:59:59 GMT
+		Content-Type: text/html;charset=ISO-8859-1
+		Content-Length: 122
+		*/
+		//int len = tmp.length();
+		//char header[256] = { 0 };
+		//sprintf(header, "HTTP/1.1 200 OK\r\nDate: Sat, 31 Dec 2005 23:59:59 GMT\r\nContent-Type: text/html\r\nContent-Length: %d\r\n\r\n", len);
+		//people->socket_SendStr(header);
 		people->socket_SendStr(tmp.c_str(),tmp.length());
 		closePeople(people);
 		//people->socket_CloseSocket(1);
@@ -181,33 +191,12 @@ Uint32 mythStreamMapServer::TimerCallbackStatic(Uint32 interval, void *param)
 
 Uint32 mythStreamMapServer::TimerCallback(Uint32 interval)
 {
-	char tmp[256] = { 0 };
-	for (map<int, mythStreamServer*>::iterator Iter = servermap.begin(); Iter != servermap.end(); Iter++){
-		if (Iter->second){
-			int tmpnum = Iter->second->getClientNumber();
-			int speed = Iter->second->GetDecoder()->GetTimeCount();
-			sprintf(tmp, "status:%d:%d:%d\n", (int) Iter->first, tmpnum,speed);
-			mythUdp::GetInstance()->SendData(tmp);
-			if (tmpnum == 0){
-			//lock
-				servercount[tmpnum]++;
-				if (servercount[tmpnum] >= 5){
-					SDL_LockMutex(mapmutex);
-					Iter->second->stop();
-					//printf("delete server = %d\n", Iter->first);
-					delete Iter->second;
-					servermap[Iter->first] = NULL;
-					SDL_UnlockMutex(mapmutex);
-					//Iter->first
-					sprintf(tmp, "clear:%d\n", (int) Iter->first);
-					mythUdp::GetInstance()->SendData(tmp);
-				}
-			}
-			else{
-				servercount[tmpnum] = 0;
-			}
-		}
-	}
+	char filename[256] = { 0 };
+	read_profile_string("config", "listtxt", filename, 256, "clients.txt", MYTH_INFORMATIONINI_FILE);
+	string tmp = showAllClients();
+	FILE* file = fopen(filename, "w");
+	fprintf(file, tmp.c_str());
+	fclose(file);
 	return interval;
 }
 #endif
