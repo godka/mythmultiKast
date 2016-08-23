@@ -195,8 +195,10 @@ Uint32 mythStreamMapServer::TimerCallback(Uint32 interval)
 	read_profile_string("config", "listtxt", filename, 256, "clients.txt", MYTH_INFORMATIONINI_FILE);
 	string tmp = showAllClients();
 	FILE* file = fopen(filename, "w");
-	fprintf(file, tmp.c_str());
-	fclose(file);
+	if (file){
+		fprintf(file, tmp.c_str());
+		fclose(file);
+	}
 	return interval;
 }
 #endif
